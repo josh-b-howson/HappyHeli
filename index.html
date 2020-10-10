@@ -6,13 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Heli</title>
   <link rel="stylesheet" href="reset.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Commissioner:wght@800&family=Yanone+Kaffeesatz:wght@200&display=swap"
+    rel="stylesheet">
   <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Commissioner', sans-serif;
+    }
+
+    h1 {
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+      font-size: 6rem;
+      margin-bottom: 1rem;
+      margin-top: 4rem;
+      color: #6aa0a8;
+      text-align: center;
+    }
+
+    .help {
+      font-size: .925rem;
+      font-weight: bold;
+      color: #6c627a;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .wrap::before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-image: url(images/Cloud-1.svg);
+      background-size: min(250%, 1080px) auto;
+      background-position: center 100%;
+      background-repeat: no-repeat;
+      opacity: 3%;
+    }
+
     .wrap {
+      position: relative;
       display: flex;
+      flex-direction: column;
       background-color: #312e36;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       min-height: 100vh;
+    }
+
+    .bg-back {
+      width: 100%;
+      height: 100%
     }
 
     .bg-back:hover {
@@ -56,8 +101,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      height: 100%;
       padding: 10%;
-      transition: transform .75s cubic-bezier(.19,0,0,1.32);
+      transition: transform .75s cubic-bezier(.19, 0, 0, 1.32);
     }
 
     .heli-wrap:hover {
@@ -65,8 +112,14 @@
     }
 
     .card {
+      flex-grow: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: max(33%, 600px);
       max-width: calc(100vw - 2rem);
+      margin-bottom: 2rem;
       background-color: #E3F4F7;
       border-radius: .5rem;
 
@@ -227,6 +280,8 @@
 
 <body>
   <div class="wrap">
+    <h1>Happy Heli</h1>
+    <div class="help">✈ Hover me to fly ✈</div>
     <div class="card">
       <div class="bg-back">
         <div class="heli-wrap">
