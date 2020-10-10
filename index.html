@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Heli</title>
+  <link rel="stylesheet" href="reset.css">
+  <style>
+    .wrap {
+      display: flex;
+      background-color: #312e36;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .bg-back:hover {
+      position: relative;
+      background: url(images/Cloud-2.svg) no-repeat -400% 50%/75% auto;
+      animation: bg-back-slide 10s linear infinite;
+    }
+
+    @keyframes bg-back-slide {
+      from {
+        background-position-x: -400%;
+      }
+
+      to {
+        background-position-x: 400%;
+      }
+    }
+
+    .bg-back:hover .bg-front {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(images/Cloud-1.svg) no-repeat 200% 100%/200% auto;
+      animation: bg-front-slide 4s linear infinite;
+      filter: drop-shadow(0 0 8rem rgba(255, 255, 255, 1))
+    }
+
+    @keyframes bg-front-slide {
+      from {
+        background-position-x: 200%;
+      }
+
+      to {
+        background-position-x: -200%;
+      }
+    }
+
+    .heli-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10%;
+      transition: transform .75s cubic-bezier(.19,0,0,1.32);
+    }
+
+    .heli-wrap:hover {
+      transform: rotate(-2deg);
+    }
+
+    .card {
+      width: max(33%, 600px);
+      max-width: calc(100vw - 2rem);
+      background-color: #E3F4F7;
+      border-radius: .5rem;
+
+      box-shadow: .25rem 1rem 4rem rgba(0, 0, 0, .2);
+      overflow: hidden;
+    }
+
+    .card #heli {
+      fill: #0F5764;
+    }
+
+    .card #blade-wrap {
+      perspective: 40px;
+      perspective-origin: 40% 26%;
+    }
+
+    .card #blade {
+      transform-origin: 42% 0;
+      transform-style: preserve-3d;
+    }
+
+    .card {
+      position: relative
+    }
+
+    .card #heli {
+      position: relative;
+      max-width: 200px;
+    }
+
+    .card:hover #heli {
+      animation: jitterY 4s ease infinite, jitterX 6.14s ease infinite;
+    }
+
+    .card:hover #blade {
+      animation: prop-spin 1s linear infinite;
+    }
+
+    @keyframes jitterY {
+      0% {
+        transform: translateY(0);
+      }
+
+      8% {
+        transform: translateY(-.5vh);
+      }
+
+      17% {
+        transform: translateY(-.1vh);
+      }
+
+      23% {
+        transform: translateY(-.7vh);
+      }
+
+      28% {
+        transform: translateY(-.3vh);
+      }
+
+      33% {
+        transform: translateY(-.9vh);
+      }
+
+      41% {
+        transform: translateY(-.5vh);
+      }
+
+      53% {
+        transform: translateY(-1vh);
+      }
+
+      66% {
+        transform: translateY(-.6vh);
+      }
+
+      74% {
+        transform: translateY(-.9vh);
+      }
+
+      83% {
+        transform: translateY(-.5vh);
+      }
+
+      92% {
+        transform: translateY(-.6vh);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes jitterX {
+      0% {
+        left: 0;
+      }
+
+      8% {
+        left: -.25vh;
+      }
+
+      17% {
+        left: -.5vh;
+      }
+
+      23% {
+        left: -.35vh;
+      }
+
+      28% {
+        left: -.15vh;
+      }
+
+      33% {
+        left: -.45vh;
+      }
+
+      41% {
+        left: -.25vh;
+      }
+
+      53% {
+        left: -.5vh;
+      }
+
+      66% {
+        left: -.3vh;
+      }
+
+      74% {
+        left: -.45vh;
+      }
+
+      83% {
+        left: -.25vh;
+      }
+
+      92% {
+        left: -.3vh;
+      }
+
+      100% {
+        left: 0;
+      }
+    }
+
+    @keyframes prop-spin {
+      0% {
+        transform: rotateY(180deg);
+      }
+
+      100% {
+        transform: rotateY(540deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="bg-back">
+        <div class="heli-wrap">
+          <svg id="heli" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <g id="blade-wrap">
+              <path id="blade" fill-rule="evenodd" clip-rule="evenodd"
+                d="M48.97 17.06c0 .52-.42.94-.94.94H5.93a.94.94 0 010-1.87h42.1c.52 0 .94.42.94.93z" />
+            </g>
+            <path id="body" fill-rule="evenodd" clip-rule="evenodd"
+              d="M57.45 26.85L40.11 28.9c-2.5-5.2-6.13-6.28-7.63-6.17h-4.85v-3.08c.69 0 1.73-.69 1.73-2.06s-1.04-2.4-2.43-2.4a2.36 2.36 0 00-2.43 2.4c0 1.37 1.05 2.06 1.74 2.06v3.08h-4.16c-3.33 0-6.94 2.74-8.33 4.12-2.3 2.05-6.45 7.4-4.5 12.33.98 2.5 4.88 3.58 9.34 3.92l-1.28 4.65h-1.47c-.88 0-1.29-.26-1.47-.45-.25-.26-.56-.58-.92-.58h-.39c-.57 0-1.05.48-.84 1 .13.34.34.69.64 1a3.99 3.99 0 002.98 1.09h19.42l.2-.02a3.43 3.43 0 001.58-.81c.35-.32.65-.73.83-1.25.18-.53-.3-1-.88-1h-.2c-.38 0-.69.29-.98.56l-.17.17c-.3.27-.7.29-1.1.29h-1.7l-1.44-5.2c4.68-1.14 7.7-5.16 8.71-8.85L63 29.24v-11.3h-2.08l-3.47 8.9zm-37.98 20.9h11.2l-1.35-4.9v-.02c-2.5.27-5.59.46-8.6.38l-1.25 4.54zm-7.82-14.74h10.22c.11 0 .2-.09.2-.2v-8.5a.2.2 0 00-.2-.2c-4.5.16-8.9 5.52-10.4 8.62a.2.2 0 00.18.28z" />
+          </svg>
+          <div class="bg-front"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
