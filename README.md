@@ -1,6 +1,6 @@
 # HappyHeli
 The cheeriest chopper on the web. An exercise in SVG animation.
 
-[Live Demo](https://josh-b-howson.github.io/HappyHeli/)
+[Live Demo](https://josh-howson.github.io/HappyHeli/)
 
-![Gif of Happy Heli](https://josh-b-howson.github.io/HappyHeli/images/happyheli.gif)
+![Gif of Happy Heli](https://josh-howson.github.io/HappyHeli/images/happyheli.gif)
